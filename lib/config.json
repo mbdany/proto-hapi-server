@@ -5,7 +5,7 @@
   "static-route": {
     "handler": {
       "directory": {
-        "path": "../dist"
+        "path": "../../dist"
       }
     }
   },
