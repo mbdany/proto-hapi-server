@@ -27,6 +27,12 @@ module.exports = (configFileName) => {
         });
 
         //---------------------------------------
+        // Add socket io pluggins
+        //---------------------------------------
+        var handleSocketIo = require("./core/HandleSocketIo");
+        handleSocketIo(server, config);
+
+        //---------------------------------------
         // Configure plugins and Start the server
         //---------------------------------------
         server.register([{

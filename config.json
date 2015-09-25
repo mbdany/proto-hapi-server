@@ -9,5 +9,6 @@
       }
     }
   },
-  "dynamic-routes": "routes/*.js"
+  "dynamic-routes": "routes/*.js",
+  "socket.io-listeners": "listeners/*.js"
 }
