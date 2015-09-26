@@ -18,16 +18,10 @@ var HandleSocketIo = function (server, config) {
         cwd: process.cwd()
     };
     var files = glob.sync(socketioroutes, globOptions);
-    var socketiolisteners = [];
     files.forEach(function (file) {
-        socketiolisteners.push(require(globOptions.cwd + '/' + file));
-    });
-    io.on("connection", function (socket) {
-        socket.emit('connected');
+        var listener = require(globOptions.cwd + '/' + file);
+        listener(io, server, config);
 
-        socketiolisteners.forEach( listener => {
-            listener(socket, server, config);
-        });
     });
 
 };
