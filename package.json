@@ -20,6 +20,7 @@
   "dependencies": {
     "blipp": "^2.1.3",
     "bluebird": "^2.9.30",
+    "glob": "^5.0.15",
     "hapi": "^9.0.4",
     "hapi-router": "git+https://github.com/eferte/hapi-router",
     "inert": "^3.0.1",
