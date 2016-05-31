@@ -7,7 +7,7 @@
 "use strict";
 /* module, global require, console */
 
-module.exports = (configFileName) => {
+module.exports = (configFileName, onReadyHandler) => {
 
     //-----------------------------
     // load configuration and then,
@@ -49,6 +49,9 @@ module.exports = (configFileName) => {
 
             server.start(function () {
                 console.log('listening port ' + port + '...');
+				if (onReadyHandler) {
+					onReadyHandler(server, config);
+				}
             });
         });
     });
