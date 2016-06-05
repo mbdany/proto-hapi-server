@@ -10,3 +10,10 @@ A mini hapi server for static files and configurable routes -- for prototyping
 
 # check server : 
 - http://localhost/ping
+
+
+
+# configure this proto-hapi-server into another existing project :
+
+- copy the full directory "root-of-your-project/node_module/proto-hapi-server/server" into the project root directory.
+- then move the "root-of-your-project/server/server.js" into the project root directory.
