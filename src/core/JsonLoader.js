@@ -7,12 +7,11 @@
 "use strict";
 /* global module,require,__filename */
 var fs       = require('fs'),
-    P        = require('bluebird'),
     logError = require('./LogError')(__filename);
 
 module.exports = jsonFileName => {
 
-    return new P((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         fs.readFile(jsonFileName, (readFileErr, data) => {
             if (readFileErr) {
 

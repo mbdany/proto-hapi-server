@@ -18,7 +18,9 @@ var validateKeyName = (name) => {
 };
 
 var Config = {
-    load:   (jsonFileName = 'config.json', defaultConfig = {}) => {
+    load:   (jsonFileName, defaultConfig) => {
+        jsonFileName = jsonFileName || 'config.json';
+        defaultConfig = defaultConfig || {};
         return loadJson(jsonFileName).then(json => {
             Config.merge(defaultConfig);
             for (var name in json) {
