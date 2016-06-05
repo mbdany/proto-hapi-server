@@ -1,6 +1,6 @@
 {
   "name": "hapi-server",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A mini hapi server for static files and configurable routes -- for prototyping",
   "main": "./lib/server.js",
   "scripts": {
