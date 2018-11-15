@@ -13,17 +13,25 @@ module.exports = (configFileName, onReadyHandler) => {
     // load configuration and then,
     // start application.
     //-----------------------------
-    require('./core/Config').load(configFileName, {server:{}}).then((config) => {
+    require('./core/Config').load(configFileName, { server: {} }).then(config => {
 
         var Hapi = require('hapi');
+        var fs = require('fs');
+        var host = config.server.host || 'localhost';
         var port = config.server.port || 80;
+        var certKey = fs.readFileSync(config.server.tlsKey);
+        var certCrt = fs.readFileSync(config.server.tlsCert);
+        var tls = config.server.protocol === 'https' ? { key: certKey, cert: certCrt } : undefined;
+        
 
         //-------------------------------------
         // Create a server with a host and port
         //-------------------------------------
         var server = new Hapi.Server();
         server.connection({
-            port: port
+            host: host,
+            port: port,
+            tls: tls
         });
 
         //---------------------------------------
@@ -49,9 +57,9 @@ module.exports = (configFileName, onReadyHandler) => {
 
             server.start(function () {
                 console.log('listening port ' + port + '...');
-				if (onReadyHandler) {
-					onReadyHandler(server, config);
-				}
+                if (onReadyHandler) {
+                    onReadyHandler(server, config);
+                }
             });
         });
     });
